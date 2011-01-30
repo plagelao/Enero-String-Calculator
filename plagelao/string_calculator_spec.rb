@@ -43,6 +43,14 @@ class Separator < Regexp
     defined_separators[0].to_s.split('][')
   end
 end
+
+describe Separator do
+  it "uses custom separators" do
+    s = Separator.new "//[***]\n1***2"
+    "1***2".split(s).should == ["1", "2"]
+  end
+end
+
 describe StringCalculator do
   let(:calculator){StringCalculator.new}
 
